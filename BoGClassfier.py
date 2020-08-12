@@ -38,7 +38,6 @@ def classifyTweet(XtrainVector, YtrainVector,XtestVector,YtestVector):
     predictedNB = text_clf_NB.predict(XtestVector)
     mean1 = np.mean(predictedNB == YtestVector)
     print("Prediction Accuracy for Bag of words with MultiNominal Naive Bayes:",mean1*100)
-# text_clf_SVM = Pipeline([('vec', CountVectorizer(stop_words= stop)), ('tfidf', TfidfTransformer()), ('clf', SVC(max_iter=5, probability=True,random_state=42))])
     text_clf_SVM = Pipeline([('vec', CountVectorizer(stop_words= stop_)), ('tfidf', TfidfTransformer()), ('clf', SGDClassifier(loss='log', penalty='l2',alpha=1e-3, n_iter=5, random_state=42))])
     text_clf_SVM = text_clf_SVM.fit(XtrainVector, YtrainVector)
     predictedSVM = text_clf_SVM.predict(XtestVector)

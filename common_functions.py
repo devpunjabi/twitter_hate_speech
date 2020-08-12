@@ -2,6 +2,20 @@ import numpy as np
 import matplotlib.pylab as plt
 import time
 from IPython import display
+import operator
+import pandas as pd
+from sklearn.metrics import accuracy_score
+
+from tweepy import OAuthHandler
+from tweepy import Stream
+from tweepy import API
+import io
+from tweepy.streaming import StreamListener
+import json
+import pickle
+from HAL_RF_functions import new_tweet_RF
+from BoGClassfier import BOGTweet_live
+
 
 ## separating the input data to test and train
 
@@ -64,9 +78,7 @@ def static_data_live_plot(x0,y0,x1,y1,label0='offense',label1='none'):
 
             
 ## voting matrix function
-import operator
-import pandas as pd
-from sklearn.metrics import accuracy_score
+
 def voting_matrix(test_class,RFpredictions,pre_svm,pre_nb):
     THE_CLASS = list(pd.factorize(test_class)[0])
     NB_class = list(pd.factorize(pre_nb)[0])
@@ -91,20 +103,10 @@ def voting_matrix(test_class,RFpredictions,pre_svm,pre_nb):
 
 ## reading tweet live
 
-from tweepy import OAuthHandler
-from tweepy import Stream
-from tweepy import API
-import io
-from tweepy.streaming import StreamListener
-import json
-import pickle
-from HAL_RF_functions import new_tweet_RF
-from BoGClassfier import BOGTweet_live
-
 
 #Variables that contains the user credentials to access Twitter API
-access_token = "900251987161305089-HgGGuGNtSfRCAGdMqWiRkaak42RIQ4V"
-access_token_secret = "QBpZd9hlSc1qVp2SguVP4KcUotjVQVEKn0b17e7D9UyMA"
-consumer_key = "c8ueHMou4lOZWRMyVxzcLNENQ"
-consumer_secret = "E5AbdRPJxoNCnl8TR1XCkhDg5I749yWcCB89HFuq56iCxEpIvO"
+access_token = ""
+access_token_secret = ""
+consumer_key = ""
+consumer_secret = ""
 
