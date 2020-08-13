@@ -12,9 +12,6 @@ from sklearn.naive_bayes import MultinomialNB
 from sklearn.pipeline import Pipeline
 from sklearn.svm import SVC
 
-
-
-
 def preprocessTweet(TweeList):
     testList = []
     for d in range(len(TweeList)):
